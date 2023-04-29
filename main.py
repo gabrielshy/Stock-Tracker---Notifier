@@ -11,7 +11,7 @@ lower_limits = [100, 130, 140, 30]
 def printFormat(current_prices):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    stocks_price = [f"{dt_string}:\t"]
+    stocks_price = [f"{dt_string}\t:\t"]
     for i in range(len(tickers)):
         stock = (f"{tickers[i]} - ${current_prices[i]}\t")
         stocks_price.append(stock)
@@ -25,6 +25,7 @@ def checkPrices():
         current_prices.append(stock_info['currentPrice'])
     printFormat(current_prices)
     return current_prices
+
 
 def notification(current_prices):
     for i in range(len(tickers)):
@@ -43,6 +44,7 @@ def notification(current_prices):
             toast.set_audio(audio.LoopingAlarm8, loop=False)
             toast.show()
         time.sleep(5)
+
 
 def main():
     while True:
